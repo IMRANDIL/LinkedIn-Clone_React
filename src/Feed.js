@@ -6,6 +6,7 @@ import PhotoIcon from '@mui/icons-material/Photo';
 import SubscriptionsIcon from '@mui/icons-material/Subscriptions';
 import EventNoteIcon from '@mui/icons-material/EventNote';
 import CalendarViewDayIcon from '@mui/icons-material/CalendarViewDay';
+import Post from './Post';
 
 
 
@@ -33,6 +34,11 @@ const Feed = () => {
                     <InputOption Icon={CalendarViewDayIcon} title='Write article' color='#7FC15E' />
                 </div>
             </div>
+
+            {/* Posts */}
+
+            <Post />
+
 
         </div>
     )
