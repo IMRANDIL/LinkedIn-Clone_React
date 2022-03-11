@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './Feed.css'
 import CreateIcon from '@mui/icons-material/Create';
 import InputOption from './InputOption';
@@ -13,7 +13,18 @@ import Post from './Post';
 
 
 
+
+
+
+
 const Feed = () => {
+
+    const [post, setPost] = useState([])
+
+
+
+
+
     return (
         <div className='feed'>
 
@@ -37,7 +48,13 @@ const Feed = () => {
 
             {/* Posts */}
 
-            <Post />
+            <Post
+                name='Ali Imran'
+                photoUrl=''
+                description='Testing'
+                message='Hey LinkedIn what is up man'
+
+            />
 
 
         </div>
