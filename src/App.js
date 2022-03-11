@@ -3,6 +3,7 @@ import React from 'react';
 
 import './App.css';
 import Header from './Header';
+import Sidebar from './Sidebar';
 
 
 
@@ -22,9 +23,16 @@ function App() {
 
 
       {/* App_Body */}
-      {/* sidebar */}
-      {/* Feed */}
-      {/* Widgets */}
+      <div className="app__body">
+        {/* sidebar */}
+        <Sidebar />
+
+
+
+        {/* Feed */}
+        {/* Widgets */}
+      </div>
+
 
     </div>
   );
