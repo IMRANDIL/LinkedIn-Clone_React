@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './Feed.css'
 import CreateIcon from '@mui/icons-material/Create';
 import InputOption from './InputOption';
@@ -7,7 +7,8 @@ import SubscriptionsIcon from '@mui/icons-material/Subscriptions';
 import EventNoteIcon from '@mui/icons-material/EventNote';
 import CalendarViewDayIcon from '@mui/icons-material/CalendarViewDay';
 import Post from './Post';
-
+import { db } from './firebase';
+import firebase from 'firebase/compat/app';
 
 
 
@@ -19,7 +20,46 @@ import Post from './Post';
 
 const Feed = () => {
 
-    const [post, setPost] = useState([])
+    const [posts, setPost] = useState([]);
+    const [input, setInput] = useState('')
+
+
+    useEffect(() => {
+
+        db.collection('posts').onSnapshot(snapshot => {
+            setPost(snapshot.docs.map(doc => (
+                {
+                    id: doc.id,
+                    data: doc.data()
+
+                }
+            )))
+        })
+
+
+
+
+
+
+    }, [])
+
+
+
+
+
+    const sendPost = (e) => {
+        e.preventDefault();
+
+        db.collection('posts').add({
+            name: 'Ali Imran',
+            description: 'This is a test from firebase',
+            message: input,
+            photoUrl: '',
+            timestamp: firebase.firestore.fieldValue.serverTimestamp()
+        })
+
+
+    }
 
 
 
@@ -33,8 +73,8 @@ const Feed = () => {
                 <div className="feed__input">
                     <CreateIcon />
                     <form>
-                        <input type="text" />
-                        <button type='submit'>Send</button>
+                        <input type="text" value={input} onChange={e => setInput(e.target.value)} />
+                        <button type='submit' onClick={sendPost}>Send</button>
 
                     </form>
                 </div>
@@ -47,6 +87,11 @@ const Feed = () => {
             </div>
 
             {/* Posts */}
+
+            {posts.map((post) => (
+                <Post />
+
+            ))}
 
             <Post
                 name='Ali Imran'
