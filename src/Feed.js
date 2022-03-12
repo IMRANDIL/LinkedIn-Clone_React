@@ -26,7 +26,7 @@ const Feed = () => {
 
     useEffect(() => {
 
-        db.collection('posts').onSnapshot(snapshot => {
+        db.collection('posts').orderBy('timestamp', 'desc').onSnapshot(snapshot => {
             setPost(snapshot.docs.map(doc => (
                 {
                     id: doc.id,
@@ -55,8 +55,9 @@ const Feed = () => {
             description: 'This is a test from firebase',
             message: input,
             photoUrl: '',
-            timestamp: firebase.firestore.fieldValue.serverTimestamp()
-        })
+            timestamp: firebase.firestore.FieldValue.serverTimestamp()
+        });
+        setInput('')
 
 
     }
@@ -88,18 +89,19 @@ const Feed = () => {
 
             {/* Posts */}
 
-            {posts.map((post) => (
-                <Post />
+            {posts.map(({ id, data: { name, description, message, photoUrl } }) => (
+                <Post
+                    key={id}
+                    name={name}
+                    photoUrl={photoUrl}
+                    description={description}
+                    message={message}
+
+                />
 
             ))}
 
-            <Post
-                name='Ali Imran'
-                photoUrl=''
-                description='Testing'
-                message='Hey LinkedIn what is up man'
 
-            />
 
 
         </div>
