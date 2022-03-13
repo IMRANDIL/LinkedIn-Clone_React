@@ -47,10 +47,10 @@ const Login = () => {
             <img src={LinkedIn} alt="linkedin-img" />
             <form>
 
-                <input type="text" placeholder='Full name (required if registering)' />
+                <input type="text" placeholder='Full name (required if registering)' value={name} onChange={e => setName(e.target.value)} />
                 <input type="text" placeholder='Profile picUrl (optional)' />
-                <input type="email" placeholder='Email' />
-                <input type="password" placeholder='Password' />
+                <input type="email" placeholder='Email' value={email} onChange={(e) => setEmail(e.target.value)} />
+                <input type="password" placeholder='Password' value={password} onChange={(e) => setEmail(e.target.value)} />
                 <button type='submit' onClick={login}>Sign In</button>
             </form>
 
