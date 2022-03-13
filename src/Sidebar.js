@@ -1,5 +1,7 @@
 import { Avatar } from '@mui/material'
 import React from 'react'
+import { useSelector } from 'react-redux'
+import { selectUser } from './features/userSlice'
 import './Sidebar.css'
 
 
@@ -12,6 +14,9 @@ import './Sidebar.css'
 
 
 const Sidebar = () => {
+
+    const user = useSelector(selectUser);
+
 
 
     const recentItem = (topic) => (
@@ -34,9 +39,11 @@ const Sidebar = () => {
 
             <div className="sidebar__top">
                 <img src="https://c8.alamy.com/comp/PF3NWT/desktop-source-code-and-technology-background-developer-or-programer-with-coding-and-programming-wallpaper-by-computer-language-and-source-code-com-PF3NWT.jpg" alt="back-img" />
-                <Avatar className='sidebar__avatar' />
-                <h2>Ali Imran Adil</h2>
-                <h4>Aliimranadil2@gmail.com</h4>
+
+                <Avatar className='sidebar__avatar' src={user.photoUrl} />
+
+                <h2>{user.displayName}</h2>
+                <h4>{user.email}</h4>
             </div>
 
             <div className="sidebar__stats">
