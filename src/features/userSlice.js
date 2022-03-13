@@ -1,31 +1,31 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 
 
 export const userSlice = createSlice({
-  name: 'User',
+  name: 'user',
   initialState: {
-    value: 0
+    user: null
   },
   reducers: {
-    increment: state => {
-      state.value += 1
+    login: (state, action) => {
+      state.value = action.payload
     },
-    decrement: state => {
-      state.value -= 1
-    },
-    incrementByAmount: (state, action) => {
-      state.value += action.payload
+
+    logout: (state) => {
+      state.user = null;
     }
   }
+
+
 });
 
 
 
-export const { increment, decrement, incrementByAmount } = userSlice.actions;
+export const { login, logout } = userSlice.actions;
 
 
+//selector.....
 
-
-
+export const selectUser = (state) => state.user.user;
 
 export default userSlice.reducer;

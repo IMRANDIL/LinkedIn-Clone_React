@@ -1,3 +1,4 @@
+import { useSelector } from 'react-redux'
 import React from 'react';
 
 
@@ -5,6 +6,8 @@ import './App.css';
 import Feed from './Feed';
 import Header from './Header';
 import Sidebar from './Sidebar';
+import { selectUser } from './features/userSlice';
+import Login from './Login';
 
 
 
@@ -13,6 +16,12 @@ import Sidebar from './Sidebar';
 
 
 function App() {
+
+  const user = useSelector(selectUser)
+
+
+
+
   return (
     <div className="app">
 
@@ -23,17 +32,28 @@ function App() {
       <Header />
 
 
-      {/* App_Body */}
-      <div className="app__body">
-        {/* sidebar */}
-        <Sidebar />
+      {!user ? (<Login />) : (
 
 
 
-        {/* Feed */}
-        <Feed />
-        {/* Widgets */}
-      </div>
+        <div className="app__body">
+
+          <Sidebar />
+
+
+
+
+          <Feed />
+
+        </div>
+
+
+      )}
+
+
+
+
+
 
 
     </div>
