@@ -63,6 +63,7 @@ const Login = () => {
                 profileUrl: userAuth.user.photoURL
 
             }))
+
         }).catch(err => alert(err))
 
 

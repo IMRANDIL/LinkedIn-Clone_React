@@ -40,7 +40,7 @@ const Sidebar = () => {
             <div className="sidebar__top">
                 <img src="https://c8.alamy.com/comp/PF3NWT/desktop-source-code-and-technology-background-developer-or-programer-with-coding-and-programming-wallpaper-by-computer-language-and-source-code-com-PF3NWT.jpg" alt="back-img" />
 
-                <Avatar className='sidebar__avatar' src={user?.photoUrl} />
+                <Avatar className='sidebar__avatar' src={user?.photoUrl}>{user?.email[0]}</Avatar>
 
                 <h2>{user.displayName}</h2>
                 <h4>{user.email}</h4>
