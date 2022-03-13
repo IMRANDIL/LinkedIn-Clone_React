@@ -17,6 +17,7 @@ const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [name, setName] = useState('');
+    const [profilePic, setProfilePic] = useState('')
 
 
 
@@ -48,7 +49,7 @@ const Login = () => {
             <form>
 
                 <input type="text" placeholder='Full name (required if registering)' value={name} onChange={e => setName(e.target.value)} />
-                <input type="text" placeholder='Profile picUrl (optional)' />
+                <input type="text" placeholder='Profile picUrl (optional)' value={profilePic} onChange={e => setProfilePic(e.target.value)} />
                 <input type="email" placeholder='Email' value={email} onChange={(e) => setEmail(e.target.value)} />
                 <input type="password" placeholder='Password' value={password} onChange={(e) => setEmail(e.target.value)} />
                 <button type='submit' onClick={login}>Sign In</button>
